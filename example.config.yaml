@@ -1,0 +1,16 @@
+agent:
+  id:  "agent-2"
+  token: "your-token"
+  interval: 5
+  backend_url: "http://localhost:8000"
+
+metrics:
+  enable_cpu: true
+  enable_memory: true
+  enable_disk: true
+  enable_network: true
+
+logs:
+  paths:
+    - "/var/log/syslog"
+    - "/var/log/auth.log"
