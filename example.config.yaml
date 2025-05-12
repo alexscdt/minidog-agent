@@ -9,8 +9,8 @@ metrics:
   enable_memory: true
   enable_disk: true
   enable_network: true
+  enable_logs: true
 
 logs:
   paths:
-    - "/var/log/syslog"
-    - "/var/log/auth.log"
+    - "/logs/bot.log"

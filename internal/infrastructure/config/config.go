@@ -12,6 +12,7 @@ type MetricsConfig struct {
 	EnabledRAM     bool `yaml:"enable_memory"`
 	EnabledDisk    bool `yaml:"enable_disk"`
 	EnabledNetwork bool `yaml:"enable_network"`
+	EnableLogs     bool `yaml:"enable_logs"`
 }
 
 type LogsConfig struct {
