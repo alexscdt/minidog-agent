@@ -1,13 +1,12 @@
 package collector
 
 import (
-	"fmt"
 	"github.com/alexscdt/minidog-agent/internal/domain"
 	"github.com/shirou/gopsutil/v3/cpu"
 	"log"
 )
 
-func CollectCpu() {
+func CollectCpu() domain.CPUMetrics {
 	percentages, err := cpu.Percent(0, false)
 	if err != nil {
 		log.Fatalf("Failed to collect CPU metrics: %v", err)
@@ -33,7 +32,7 @@ func CollectCpu() {
 		log.Fatalf("Failed to get CPU times: %v", err)
 	}
 
-	cpuStat := domain.CPUMetrics{
+	return domain.CPUMetrics{
 		Model:        cpuInfo[0].ModelName,
 		Cores:        physicalCount,
 		Threads:      logicalCount,
@@ -44,5 +43,4 @@ func CollectCpu() {
 		IdleTime:     cpuTimes[0].Idle,
 	}
 
-	fmt.Printf("CPU info: %v\n", cpuStat)
 }
