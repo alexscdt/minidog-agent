@@ -8,10 +8,10 @@ type AgentConfig struct {
 }
 
 type MetricsConfig struct {
-	EnabledCPU     bool `yaml:"enabledCPU"`
-	EnabledRAM     bool `yaml:"enabledRAM"`
-	EnabledDisk    bool `yaml:"enabledDisk"`
-	EnabledNetwork bool `yaml:"enabledNetwork"`
+	EnabledCPU     bool `yaml:"enable_cpu"`
+	EnabledRAM     bool `yaml:"enable_memory"`
+	EnabledDisk    bool `yaml:"enable_disk"`
+	EnabledNetwork bool `yaml:"enable_network"`
 }
 
 type LogsConfig struct {
