@@ -13,4 +13,4 @@ metrics:
 
 logs:
   paths:
-    - "/logs/bot.log"
+    - "path/to/your/logs/*.log"

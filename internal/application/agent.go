@@ -66,7 +66,7 @@ func StartAgent(cfg *config.Config) {
 
 				go func() {
 					for logEvent := range logChannel {
-						fmt.Printf("[LOG][%s] %s\n", logEvent.FilePath, logEvent.Content)
+						fmt.Printf("%s | %s : [%s] %s\n", logEvent.Timestamp, logEvent.Level, logEvent.FilePath, logEvent.Content)
 					}
 				}()
 

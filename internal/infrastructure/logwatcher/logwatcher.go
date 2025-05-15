@@ -2,6 +2,7 @@ package logwatcher
 
 import (
 	"log"
+	"strings"
 	"time"
 
 	"github.com/alexscdt/minidog-agent/internal/domain"
@@ -14,6 +15,7 @@ func WatchFile(path string, output chan<- domain.LogEvent) {
 		ReOpen:    true,
 		MustExist: true,
 		Poll:      true,
+		Location:  &tail.SeekInfo{Offset: 0, Whence: 2},
 	})
 	if err != nil {
 		log.Printf("Erreur d'ouverture du fichier %s : %v", path, err)
@@ -26,10 +28,16 @@ func WatchFile(path string, output chan<- domain.LogEvent) {
 			continue
 		}
 
+		level := "info"
+		if strings.Contains(strings.ToLower(line.Text), "error") {
+			level = "error"
+		}
+
 		output <- domain.LogEvent{
 			FilePath:  path,
 			Timestamp: time.Now(),
 			Content:   line.Text,
+			Level:     level,
 		}
 	}
 }
